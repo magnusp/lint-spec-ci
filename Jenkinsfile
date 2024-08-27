@@ -3,10 +3,15 @@ podTemplate(containers: [
     containerTemplate(name: 'spec-toolkit', image: 'ghcr.io/magnusp/specification-toolkit:5', command: 'cat', ttyEnabled: true),
   ]
   ) {
-    node(POD_LABEL) {
-        checkout scm
-
+    pipeline {
+        agent {
+            kubernetes {
+                label POD_LABEL
+            }
+        }
         stages {
+            checkout scm
+
             stage('The environment') {
                 sh 'export'
             }
@@ -23,6 +28,5 @@ podTemplate(containers: [
                 }
             }
         }
-
     }
 }
