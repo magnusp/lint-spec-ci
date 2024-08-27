@@ -6,6 +6,9 @@ podTemplate(containers: [
     node(POD_LABEL) {
         checkout scm
 
+        stage('The environment') {
+            sh 'export'
+        }
         stage('The stage') {
             when {
                 changeRequest
