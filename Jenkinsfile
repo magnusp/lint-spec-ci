@@ -12,10 +12,11 @@ pipeline {
         }
     }
     stages {
-        checkout scm
-
         stage('The environment') {
-            sh 'export'
+            steps {
+                checkout scm
+                sh 'export'
+            }
         }
         stage('The stage') {
             when {
