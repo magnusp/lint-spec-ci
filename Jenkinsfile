@@ -1,6 +1,5 @@
 podTemplate(containers: [
     containerTemplate(name: 'spec-toolkit', image: 'ghcr.io/magnusp/specification-toolkit:5', command: 'cat', ttyEnabled: true),
-    containerTemplate(name: 'spec-toolkit', image: 'ghcr.io/magnusp/specification-toolkit:5', command: 'cat', ttyEnabled: true),
   ]
   ) {
     pipeline {
