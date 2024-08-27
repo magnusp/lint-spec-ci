@@ -6,7 +6,8 @@ pipeline {
         containers:
         - name: spec-toolkit
           image: ghcr.io/magnusp/specification-toolkit:5
-          command: cat
+          command:
+            - cat
           tty: true
         '''
         }
