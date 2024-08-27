@@ -6,20 +6,23 @@ podTemplate(containers: [
     node(POD_LABEL) {
         checkout scm
 
-        stage('The environment') {
-            sh 'export'
-        }
-        stage('The stage') {
-            when {
-                changeRequest
-                changeset "openapi-spec.yaml"
+        stages {
+            stage('The environment') {
+                sh 'export'
             }
-            steps {
-                container('spec-toolkit') {
-                    sh 'oasdiff --version'
-                    sh 'vacuum version'
+            stage('The stage') {
+                when {
+                    changeRequest
+                    changeset "openapi-spec.yaml"
+                }
+                steps {
+                    container('spec-toolkit') {
+                        sh 'oasdiff --version'
+                        sh 'vacuum version'
+                    }
                 }
             }
         }
+
     }
 }
