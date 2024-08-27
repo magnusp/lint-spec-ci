@@ -20,7 +20,7 @@ pipeline {
         }
         stage('The stage') {
             when {
-                changeRequest
+                changeRequest()
                 changeset "openapi-spec.yaml"
             }
             steps {
