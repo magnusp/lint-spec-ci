@@ -1,0 +1,45 @@
+openapi: 3.1.0
+info:
+  title: Cookiehut
+  description: Cookiehut
+  version: 1.0.0
+servers:
+  - url: 'https://jsonplaceholder.typicode.com/'
+paths:
+  /todos:
+    get:
+      summary: Get all todos
+      operationId: getTodos
+      tags:
+        - todos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoArray'
+components:
+  schemas:
+    Todo:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        completed:
+          type: boolean
+      required:
+        - id
+        - userId
+        - title
+        - completed
+    TodoArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/Todo'
